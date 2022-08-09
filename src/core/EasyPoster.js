@@ -153,7 +153,7 @@ class EasyPoster {
     /**
      * 绘制图表方法
      * @param {Object} uCharts @uCharts对象 https://www.ucharts.cn/
-     * @param {String} lineCtx @uCharts的canvasId
+     * @param {String} uChartsCanvasId @uCharts的canvasId
      * @param {Object} uChartsConfig @uCharts的图表配置项
      * @param {Object} easyConfig  @配置文件
      * {
@@ -164,7 +164,7 @@ class EasyPoster {
      * }
      * @returns 
      */
-    async easyDrawChart(uCharts, lineCtx, uChartsConfig, easyConfig) {
+    async easyDrawChart(uCharts, uChartsCanvasId, uChartsConfig, easyConfig) {
         let defaultOptions = {
             x: 0,
             y: 0,
@@ -174,9 +174,9 @@ class EasyPoster {
         let options = easyConfig ? Object.assign(defaultOptions, easyConfig) : defaultOptions;
 
         return new Promise(async (resolve, reject) => {
-            const ctx = this.ctx
+
             const lc = new easyChart({
-                lineCtx,
+                canvasId:uChartsCanvasId,
                 uCharts,
                 uChartsConfig,
                 config: {
@@ -185,13 +185,13 @@ class EasyPoster {
                 }
             })
             const initRes = await lc.init()
-            // console.log(initRes)
+
             if (!initRes) {
                 reject(false)
             }
 
             const drawImg = await this.easyDrawSaveImg({
-                canvasId: lineCtx,
+                canvasId: uChartsCanvasId,
                 destWidth: options.width,
                 destHeight: options.height,
             })

@@ -1,7 +1,7 @@
 
 class easyChart {
     constructor(options) {
-        this.lineCanvasId = options.lineCtx
+        this.canvasId = options.canvasId
         this.uCharts = options.uCharts;
         this.uChartsConfig = options.uChartsConfig;
         const defaultConfig  = {
@@ -16,9 +16,9 @@ class easyChart {
     init() {
 
         return new Promise((resolve, reject)=>{
-            this.uChartsInstance[this.lineCanvasId] = new this.uCharts(this.uChartsConfig);
+            this.uChartsInstance[this.canvasId] = new this.uCharts(this.uChartsConfig);
 
-            this.uChartsInstance[this.lineCanvasId].addEventListener('renderComplete', () => { //监控图表渲染完成
+            this.uChartsInstance[this.canvasId].addEventListener('renderComplete', () => { //监控图表渲染完成
                 resolve(true)
             })
         
@@ -28,7 +28,7 @@ class easyChart {
     }
 
     getuChartsInstance() {
-        return this.uChartsInstance[this.lineCanvasId]
+        return this.uChartsInstance[this.canvasId]
     }
 }
 

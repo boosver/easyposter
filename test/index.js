@@ -3838,7 +3838,7 @@ var easyChart = /*#__PURE__*/function () {
   function easyChart(options) {
     _classCallCheck(this, easyChart);
 
-    this.lineCanvasId = options.lineCtx;
+    this.canvasId = options.canvasId;
     this.uCharts = options.uCharts;
     this.uChartsConfig = options.uChartsConfig;
     var defaultConfig = {
@@ -3855,9 +3855,9 @@ var easyChart = /*#__PURE__*/function () {
       var _this = this;
 
       return new Promise(function (resolve, reject) {
-        _this.uChartsInstance[_this.lineCanvasId] = new _this.uCharts(_this.uChartsConfig);
+        _this.uChartsInstance[_this.canvasId] = new _this.uCharts(_this.uChartsConfig);
 
-        _this.uChartsInstance[_this.lineCanvasId].addEventListener('renderComplete', function () {
+        _this.uChartsInstance[_this.canvasId].addEventListener('renderComplete', function () {
           //监控图表渲染完成
           resolve(true);
         });
@@ -3866,7 +3866,7 @@ var easyChart = /*#__PURE__*/function () {
   }, {
     key: "getuChartsInstance",
     value: function getuChartsInstance() {
-      return this.uChartsInstance[this.lineCanvasId];
+      return this.uChartsInstance[this.canvasId];
     }
   }]);
 
@@ -4041,7 +4041,7 @@ var EasyPoster = /*#__PURE__*/function () {
     /**
      * 绘制图表方法
      * @param {Object} uCharts @uCharts对象 https://www.ucharts.cn/
-     * @param {String} lineCtx @uCharts的canvasId
+     * @param {String} uChartsCanvasId @uCharts的canvasId
      * @param {Object} uChartsConfig @uCharts的图表配置项
      * @param {Object} easyConfig  @配置文件
      * {
@@ -4056,7 +4056,7 @@ var EasyPoster = /*#__PURE__*/function () {
   }, {
     key: "easyDrawChart",
     value: function () {
-      var _easyDrawChart = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee2(uCharts, lineCtx, uChartsConfig, easyConfig) {
+      var _easyDrawChart = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee2(uCharts, uChartsCanvasId, uChartsConfig, easyConfig) {
         var _this2 = this;
 
         var defaultOptions, options;
@@ -4078,9 +4078,8 @@ var EasyPoster = /*#__PURE__*/function () {
                       while (1) {
                         switch (_context.prev = _context.next) {
                           case 0:
-                            _this2.ctx;
                             lc = new easyChart({
-                              lineCtx: lineCtx,
+                              canvasId: uChartsCanvasId,
                               uCharts: uCharts,
                               uChartsConfig: uChartsConfig,
                               config: {
@@ -4088,37 +4087,36 @@ var EasyPoster = /*#__PURE__*/function () {
                                 height: options.height
                               }
                             });
-                            _context.next = 4;
+                            _context.next = 3;
                             return lc.init();
 
-                          case 4:
+                          case 3:
                             initRes = _context.sent;
 
-                            // console.log(initRes)
                             if (!initRes) {
                               reject(false);
                             }
 
-                            _context.next = 8;
+                            _context.next = 7;
                             return _this2.easyDrawSaveImg({
-                              canvasId: lineCtx,
+                              canvasId: uChartsCanvasId,
                               destWidth: options.width,
                               destHeight: options.height
                             });
 
-                          case 8:
+                          case 7:
                             drawImg = _context.sent;
-                            _context.next = 11;
+                            _context.next = 10;
                             return _this2.easyGetImageInfo(drawImg);
 
-                          case 11:
+                          case 10:
                             imgInfo = _context.sent;
 
                             _this2.easyDrawImgCover(imgInfo, options.x, options.y, options.width, options.height);
 
                             resolve(true);
 
-                          case 14:
+                          case 13:
                           case "end":
                             return _context.stop();
                         }
