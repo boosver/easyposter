@@ -167,7 +167,7 @@ ep.easyDrawSaveImg({
 首先我们用的是uCharts解决方案
 
 ```javascript
-    npm i @qiun/ucharts
+npm i @qiun/ucharts
 ```
 
 uCharts对于uniapp跨端兼容性比较好，所以选用了这个方案
@@ -178,66 +178,63 @@ uCharts对于uniapp跨端兼容性比较好，所以选用了这个方案
 
 具体使用请参考以下代码
 ```javascript
-                const canvasWidth = 300;
-                const canvasHehgit = 181
-				const lineCtx = uni.createCanvasContext('line')
-				let uChartsConfig = {
-					type: "area",
-					context: lineCtx,
-					width: canvasWidth,
-					height: canvasHehgit,
-					categories: ["2016", "2017", "2018", "2019", '2020'],
-					series: [{
-							name: "成交量A",
-							data: [1, 5, 23, 10, 29],
-							legendText: ''
-						},
+const canvasWidth = 300;
+const canvasHehgit = 181
+const lineCtx = uni.createCanvasContext('line')
+let uChartsConfig = {
+	type: "area",
+	context: lineCtx,
+	width: canvasWidth,
+	height: canvasHehgit,
+	categories: ["2016", "2017", "2018", "2019", '2020'],
+	series: [
+		{
+			name: "成交量A",
+			data: [1, 5, 23, 10, 29],
+			legendText: ''
+		},
 
-					],
+	],
 					
-					animation: true,
-					background: "#FFFFFF",
-					color: ["#FA9371", "#91CB74", "#FAC858", "#EE6666", "#73C0DE", "#3CA272", "#FC8452",
-						"#9A60B4", "#ea7ccc"
-					],
-					padding: [15, 10, 0, 15],
-					legend: {
-						show: false
-					},
-					xAxis: {
-						disableGrid: true
-					},
-					yAxis: {
-						gridType: "dash",
-						dashLength: 2
-					},
-					extra: {
-						area: {
-							type: "curve",
-							opacity: 1,
-							addLine: true,
-							width: 2,
-							gradient: true
-						}
-					}
-				}
-				// ep.easyRectangle(0, 0, 340, 501, 0, 'red')
-				
-				ep.easyDrawChart(uCharts, 'line', uChartsConfig, {
-					x: 10,
-					y: 10,
-					width: canvasWidth,
-					height: canvasHehgit
-				}).then(() => {
-                    ep.easyDrawSaveImg({
-                        canvasId: 'poster',
-                        destWidth: 340,
-                        destHeight: 501,
-                    }).then((res) => {
-                        console.log(res)
-                        this.canvasImg = res;
-                    })
-				})
+	animation: true,
+	background: "#FFFFFF",
+	color: ["#FA9371", "#91CB74", "#FAC858", "#EE6666", "#73C0DE", "#3CA272", "#FC8452","#9A60B4", "#ea7ccc"],
+	padding: [15, 10, 0, 15],
+	legend: {
+		show: false
+	},
+	xAxis: {
+		disableGrid: true
+	},
+	yAxis: {
+		gridType: "dash",
+		dashLength: 2
+	},
+	extra: {
+		area: {
+			type: "curve",
+			opacity: 1,
+			addLine: true,
+			width: 2,
+			gradient: true
+		}
+	}
+}
+
+ep.easyDrawChart(uCharts, 'line', uChartsConfig, {
+	x: 10,
+	y: 10,
+	width: canvasWidth,
+	height: canvasHehgit
+}).then(() => {
+	ep.easyDrawSaveImg({
+		canvasId: 'poster',
+		destWidth: 340,
+		destHeight: 501,
+	}).then((res) => {
+		this.canvasImg = res;
+	})
+})
     
 ```
 
