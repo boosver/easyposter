@@ -3,6 +3,7 @@ bin-debug/
 bin-release/
 node_modules/
 pnpm-lock.yaml/
+.pnpm-debug.log/
 [Oo]bj/
 [Bb]in/
 
