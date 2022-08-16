@@ -37,7 +37,7 @@ const ep = new easyposter({
 向目标画布绘制一个矩形
 
 ```javascript
-ep.fillRoundRect(0,0,width,height,20,"#ddd222");
+ep.easyRectangle(0,0,width,height,20,"#ddd222");
 ```
 参数说明
 | 参数名    | 类型   | 是否必填 | 说明                  |
