@@ -8,6 +8,10 @@
 #### 参考声明
 部分代码基础参考了小凡同学的代码特此感谢(已获得本人授权)
 
+#### 演示地址
+
+https://github.com/boosver/easyPosterDemo
+
 #### 安装教程
 
 ```bash
